@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.z3cform.jqueryui">
+
+    <include package="Products.CMFCore" />
+
+    <!-- Demo -->
+    <browser:page
+        for="*"
+        name="test-selection-widget"
+        class="collective.z3cform.jqueryui.autocomplete.demo.TestView"
+        permission="cmf.ModifyPortalContent"
+        />
+    <adapter factory="collective.z3cform.jqueryui.autocomplete.demo.TestAdapter" />
+
+</configure>

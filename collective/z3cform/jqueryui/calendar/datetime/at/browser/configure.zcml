@@ -1,0 +1,27 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="plone.formwidget.dateinput">
+
+    <browser:page
+        for="*"
+        name="date_input"
+        permission="zope2.View"
+        class=".widget.DateWidget"
+        />
+        
+    <browser:page
+        for="*"
+        name="datetime_input"
+        permission="zope2.View"
+        class=".widget.DatetimeWidget"
+        />
+        
+    <browser:page
+        for="*"
+        name="monthyear_input"
+        permission="zope2.View"
+        class=".widget.MonthYearWidget"
+        />
+
+</configure>
