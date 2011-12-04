@@ -1,0 +1,32 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.z3cform.jqueryui">
+
+    <class class=".widget.DatePickerWidget">
+        <require permission="zope.Public"
+                 interface=".interfaces.IDatePickerWidget" />
+    </class>
+    <class class=".widget.DateTimePickerWidget">
+        <require permission="zope.Public"
+                 interface=".interfaces.IDateTimePickerWidget" />
+    </class>
+
+    <adapter factory=".widget.DatePickerFieldWidget" />
+    <adapter factory=".widget.DateTimePickerFieldWidget" />
+    <adapter factory=".widget.DateConverter" />
+    <adapter factory=".widget.DateTimeConverter" />
+
+    <z3c:widgetTemplate
+        mode="input"
+ 		widget=".interfaces.IDatePickerWidget"        
+ 		layer="z3c.form.interfaces.IFormLayer"
+ 		template="datepicker_input.pt" />
+    <z3c:widgetTemplate
+        mode="input"
+ 		widget=".interfaces.IDateTimePickerWidget"        
+ 		layer="z3c.form.interfaces.IFormLayer"
+ 		template="datetimepicker_input.pt" />
+
+</configure>
