@@ -8,10 +8,10 @@
     <include package="Products.GenericSetup" file="meta.zcml" />
     <include package="collective.js.jqueryui"/>
     <include package=".autocomplete"/>
-    <include package=".datetime"/>
+    <include package=".datepicker"/>
 
     <include package=".autocomplete" file="demo.zcml"/>
-    <include package=".datetime" file="demo.zcml"/>
+    <include package=".datepicker" file="demo.zcml"/>
 
 
 </configure>
