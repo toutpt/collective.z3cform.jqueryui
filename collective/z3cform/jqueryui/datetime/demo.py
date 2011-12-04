@@ -18,9 +18,10 @@ from collective.z3cform.jqueryui import MonthYearFieldWidget
 
 class ITestForm(Interface):
 
-    date = schema.Date(title=u"Date time", required=False)
+    date = schema.Date(title=u"Date", required=False)
+    datetime = schema.Datetime(title=u"Date time", required=False)
 
-from datetime import date
+from datetime import date, datetime
 
 class TestAdapter(object):
     implements(ITestForm)
@@ -36,6 +37,14 @@ class TestAdapter(object):
         print "setting", value
 
     date = property(_get_date, _set_date)
+
+    def _get_datetime(self):
+        return datetime.today()
+
+    def _set_datetime(self, value):
+        print "setting", value
+
+    datetime = property(_get_datetime, _set_datetime)
 
 
 class TestForm(form.Form):
