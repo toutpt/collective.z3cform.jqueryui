@@ -23,21 +23,24 @@ __docformat__ = "reStructuredText"
 from datetime import date, datetime
 from z3c.form.converter import BaseDataConverter
 from collective.z3cform.jqueryui.datetime.interfaces import DateValidationError, DatetimeValidationError
+from collective.js.jqueryui import utils
 
 class DateDataConverter(BaseDataConverter):
     
     def toWidgetValue(self, value):
         if value is self.field.missing_value:
             return ""
-        return value.strftime("%d/%m/%Y")
+
+        format = utils.get_python_date_format(self.widget.request)
+        return value.strftime(format)
 
     def toFieldValue(self, value):
-        for val in value:
-            if not val:
-                return self.field.missing_value
+        if not value:
+            return self.field.missing_value
 
+        format = utils.get_python_date_format(self.widget.request)
         try:
-            value = map(int, value)
+            value = utils.parse_date(value, format)
         except ValueError:
             raise DateValidationError
         try:
