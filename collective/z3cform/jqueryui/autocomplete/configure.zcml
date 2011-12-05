@@ -6,12 +6,10 @@
 
 
     <browser:page
-        name="jquery-autocomplete-search"
+        name="jqueryui-autocomplete-search"
         for=".interfaces.IAutocompleteWidget"
         permission="zope.Public"
         class=".widget.AutocompleteSearch"
         />
-
-    <include file="demo.zcml"/>
 
 </configure>

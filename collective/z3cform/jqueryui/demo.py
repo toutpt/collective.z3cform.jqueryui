@@ -1,3 +1,4 @@
+from datetime import date, datetime
 from plone.z3cform import layout
 from Products.CMFCore.utils import getToolByName
 from z3c.form import form, button, field
@@ -7,6 +8,9 @@ from zope.interface import Interface, implements
 from zope import schema
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
+
+from collective.z3cform.jqueryui import DatePickerFieldWidget
+from collective.z3cform.jqueryui import DateTimePickerFieldWidget
 
 from collective.z3cform.jqueryui import AutocompleteFieldWidget
 from collective.z3cform.jqueryui import AutocompleteMultiFieldWidget
@@ -57,6 +61,9 @@ class ITestForm(Interface):
     keywords = schema.List(title=u"Multiple", value_type=schema.Choice(
         title=u"Multiple", source=KeywordSourceBinder()), required=False)
 
+    date = schema.Date(title=u"Date", required=False)
+    datetime = schema.Datetime(title=u"Date time", required=False)
+
 
 class TestAdapter(object):
     implements(ITestForm)
@@ -64,6 +71,22 @@ class TestAdapter(object):
 
     def __init__(self, context):
         self.context = context
+
+    def _get_date(self):
+        return date.today()
+
+    def _set_date(self, value):
+        print "setting", value
+
+    date = property(_get_date, _set_date)
+
+    def _get_datetime(self):
+        return datetime.today()
+
+    def _set_datetime(self, value):
+        print "setting", value
+
+    datetime = property(_get_datetime, _set_datetime)
 
     def _get_single_keyword(self):
         return self.context.Subject() and self.context.Subject()[0] or None
@@ -81,11 +104,12 @@ class TestAdapter(object):
 
     keywords = property(_get_keywords, _set_keywords)
 
-
 class TestForm(form.Form):
     fields = field.Fields(ITestForm)
     fields['single_keyword'].widgetFactory = AutocompleteFieldWidget
     fields['keywords'].widgetFactory = AutocompleteMultiFieldWidget
+    fields['date'].widgetFactory = DatePickerFieldWidget
+    fields['datetime'].widgetFactory = DateTimePickerFieldWidget
 
     @button.buttonAndHandler(u'Ok')
     def handle_ok(self, action):

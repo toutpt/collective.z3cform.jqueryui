@@ -8,10 +8,10 @@
     <!-- Demo -->
     <browser:page
         for="*"
-        name="test-datetime-widget"
-        class="collective.z3cform.jqueryui.datepicker.demo.TestView"
+        name="test-jqueryui-widgets"
+        class="collective.z3cform.jqueryui.demo.TestView"
         permission="cmf.ModifyPortalContent"
         />
-    <adapter factory="collective.z3cform.jqueryui.datepicker.demo.TestAdapter" />
+    <adapter factory="collective.z3cform.jqueryui.demo.TestAdapter" />
 
 </configure>

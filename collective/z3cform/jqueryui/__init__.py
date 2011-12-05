@@ -3,5 +3,5 @@ MessageFactory = MessageFactory('collective.z3cform.jqueryui')
 
 from collective.z3cform.jqueryui.autocomplete import AutocompleteFieldWidget
 from collective.z3cform.jqueryui.autocomplete import AutocompleteMultiFieldWidget
-#from collective.z3cform.jqueryui.datetpicker import DatePickerWidget, DateTimePickerWidget
-#from collective.z3cform.jqueryui.datetpicker import DatePickerFieldWidget, DateTimePickerFieldWidget
+from collective.z3cform.jqueryui.datepicker import DatePickerWidget, DateTimePickerWidget
+from collective.z3cform.jqueryui.datepicker import DatePickerFieldWidget, DateTimePickerFieldWidget

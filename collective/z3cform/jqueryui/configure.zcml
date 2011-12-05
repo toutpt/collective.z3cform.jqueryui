@@ -10,7 +10,6 @@
     <include package=".autocomplete"/>
     <include package=".datepicker"/>
 
-    <include package=".autocomplete" file="demo.zcml"/>
-    <include package=".datepicker" file="demo.zcml"/>
+    <include file="demo.zcml"/>
 
 </configure>
