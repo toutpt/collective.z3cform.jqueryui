@@ -9,9 +9,9 @@
     <browser:page
         for="*"
         name="test-datetime-widget"
-        class="collective.z3cform.jqueryui.datetime.demo.TestView"
+        class="collective.z3cform.jqueryui.datepicker.demo.TestView"
         permission="cmf.ModifyPortalContent"
         />
-    <adapter factory="collective.z3cform.jqueryui.datetime.demo.TestAdapter" />
+    <adapter factory="collective.z3cform.jqueryui.datepicker.demo.TestAdapter" />
 
 </configure>

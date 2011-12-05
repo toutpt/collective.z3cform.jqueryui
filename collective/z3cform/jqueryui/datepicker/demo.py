@@ -8,20 +8,16 @@ from zope import schema
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 
-from collective.z3cform.jqueryui import DateWidget
-from collective.z3cform.jqueryui import DateFieldWidget
-from collective.z3cform.jqueryui import DatetimeWidget
-from collective.z3cform.jqueryui import DatetimeFieldWidget
-from collective.z3cform.jqueryui import MonthYearWidget
-from collective.z3cform.jqueryui import MonthYearFieldWidget
+from collective.z3cform.jqueryui.datepicker.widget import DatePickerFieldWidget
+from collective.z3cform.jqueryui.datepicker.widget import DatetimePickerFieldWidget
 
+from datetime import date, datetime
 
 class ITestForm(Interface):
 
     date = schema.Date(title=u"Date", required=False)
     datetime = schema.Datetime(title=u"Date time", required=False)
 
-from datetime import date, datetime
 
 class TestAdapter(object):
     implements(ITestForm)
@@ -49,7 +45,8 @@ class TestAdapter(object):
 
 class TestForm(form.Form):
     fields = field.Fields(ITestForm)
-    fields['date'].widgetFactory = DateFieldWidget
+    fields['date'].widgetFactory = DatePickerFieldWidget
+    fields['datetime'].widgetFactory = DatetimePickerFieldWidget
 
     @button.buttonAndHandler(u'Ok')
     def handle_ok(self, action):

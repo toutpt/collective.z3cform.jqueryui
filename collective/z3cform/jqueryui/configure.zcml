@@ -13,5 +13,4 @@
     <include package=".autocomplete" file="demo.zcml"/>
     <include package=".datepicker" file="demo.zcml"/>
 
-
 </configure>

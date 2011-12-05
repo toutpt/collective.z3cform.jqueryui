@@ -38,7 +38,7 @@ from z3c.form.interfaces import IFormLayer
 from z3c.form.converter import CalendarDataConverter
 from z3c.form.converter import FormatterValidationError
 
-from collective.z3cform.jqueyrui.datepicker.interfaces import IDatePickerWidget
+from collective.z3cform.jqueryui.datepicker.interfaces import IDatePickerWidget
 from collective.z3cform.jqueryui.datepicker.interfaces import IDateTimePickerWidget
 
 

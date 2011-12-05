@@ -1,0 +1,2 @@
+from widget import AutocompleteFieldWidget
+from widget import AutocompleteMultiFieldWidget
