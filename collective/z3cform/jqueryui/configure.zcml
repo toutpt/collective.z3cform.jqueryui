@@ -9,6 +9,7 @@
     <include package="collective.js.jqueryui"/>
     <include package=".autocomplete"/>
     <include package=".datepicker"/>
+    <include package=".slider"/>
 
     <include file="demo.zcml"/>
 

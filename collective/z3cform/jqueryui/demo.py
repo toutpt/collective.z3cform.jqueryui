@@ -9,11 +9,7 @@ from zope import schema
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 
-from collective.z3cform.jqueryui import DatePickerFieldWidget
-from collective.z3cform.jqueryui import DateTimePickerFieldWidget
-
-from collective.z3cform.jqueryui import AutocompleteFieldWidget
-from collective.z3cform.jqueryui import AutocompleteMultiFieldWidget
+from collective.z3cform.jqueryui import widget
 
 
 class KeywordSource(object):
@@ -63,6 +59,10 @@ class ITestForm(Interface):
 
     date = schema.Date(title=u"Date", required=False)
     datetime = schema.Datetime(title=u"Date time", required=False)
+    
+    slider = schema.Int(title=u"Slider",
+                        min=5,max=15,
+                        required=False)
 
 
 class TestAdapter(object):
@@ -104,12 +104,22 @@ class TestAdapter(object):
 
     keywords = property(_get_keywords, _set_keywords)
 
+
+    def _get_slider(self):
+        return 6
+
+    def _set_slider(self, value):
+        print "setting", value
+    
+    slider = property(_get_slider, _set_slider)
+
 class TestForm(form.Form):
     fields = field.Fields(ITestForm)
-    fields['single_keyword'].widgetFactory = AutocompleteFieldWidget
-    fields['keywords'].widgetFactory = AutocompleteMultiFieldWidget
-    fields['date'].widgetFactory = DatePickerFieldWidget
-    fields['datetime'].widgetFactory = DateTimePickerFieldWidget
+    fields['single_keyword'].widgetFactory = widget.AutocompleteFieldWidget
+    fields['keywords'].widgetFactory = widget.AutocompleteMultiFieldWidget
+    fields['date'].widgetFactory = widget.DatePickerFieldWidget
+    fields['datetime'].widgetFactory = widget.DateTimePickerFieldWidget
+    fields['slider'].widgetFactory = widget.SliderFieldWidget
 
     @button.buttonAndHandler(u'Ok')
     def handle_ok(self, action):

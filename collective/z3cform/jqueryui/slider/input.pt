@@ -1,0 +1,2 @@
+<script type="text/javascript" tal:content="structure view/slider_javascript"></script>
+<div tal:attributes="id view/id"></div>

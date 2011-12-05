@@ -136,12 +136,12 @@ class DatePickerWidget(widget.HTMLTextInputWidget, Widget):
     def datepicker_javascript(self):
         return '''/* <![CDATA[ */
             jq(document).ready(function(){
-                datepicker = jq("#%(id)s").datepicker({%(options)s});
-                jq("%(altField)s").attr("readonly", "readonly");
-                jq("%(altField)s").addClass('embed');
-                jq("%(altField)s").each(function() {
-                    jq(this).val(jq.datepicker.formatDate("%(altFormat)s",
-                        jq("#%(id)s").datepicker('getDate'),
+                datepicker = $("#%(id)s").datepicker({%(options)s});
+                $("%(altField)s").attr("readonly", "readonly");
+                $("%(altField)s").addClass('embed');
+                $("%(altField)s").each(function() {
+                    $(this).val(jq.datepicker.formatDate("%(altFormat)s",
+                        $("#%(id)s").datepicker('getDate'),
                         {shortYearCutoff: %(shortYearCutoff)s,
                          dayNamesShort: %(dayNamesShort)s,
                          dayNames: %(dayNames)s,
@@ -149,9 +149,9 @@ class DatePickerWidget(widget.HTMLTextInputWidget, Widget):
                          monthNames: %(monthNames)s}
                     ));
                 });
-                jq("#%(id)s-clear").click(function() { 
-                    jq("#%(id)s").val('');
-                    jq("%(altField)s").val('');
+                $("#%(id)s-clear").click(function() { 
+                    $("#%(id)s").val('');
+                    $("%(altField)s").val('');
                 });
             });
             /* ]]> */''' % dict(id=self.id,

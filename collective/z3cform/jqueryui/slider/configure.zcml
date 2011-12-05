@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.z3cform.jqueryui">
+
+<!--     <adapter factory=".widget.SliderFieldWidget" /> -->
+<!--     <adapter factory=".widget.IntConverter" /> -->
+
+  <class class=".widget.SliderWidget">
+    <require
+        permission="zope.Public"
+        interface="collective.z3cform.jqueryui.slider.interfaces.ISliderWidget" />
+  </class>
+  
+  <z3c:widgetTemplate
+      mode="display"
+      widget="collective.z3cform.jqueryui.slider.interfaces.ISliderWidget"
+      layer="z3c.form.interfaces.IFormLayer"
+      template="display.pt" />
+
+  <z3c:widgetTemplate
+      mode="input"
+      widget="collective.z3cform.jqueryui.slider.interfaces.ISliderWidget"
+      layer="z3c.form.interfaces.IFormLayer"
+      template="input.pt" />
+
+</configure>
